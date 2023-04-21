@@ -1,0 +1,6 @@
+.inner {
+    width: calc(100vw - 21px);
+}
+#navigation .sidebar-toggle {
+    display: none;
+}

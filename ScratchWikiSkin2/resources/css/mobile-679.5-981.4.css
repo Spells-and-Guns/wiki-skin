@@ -1,0 +1,49 @@
+.inner {
+    width: calc(100vw - 20px);
+}
+#navigation .inner .discuss,
+#navigation .inner .explore,
+#navigation .inner .tips,
+#navigation .inner .about,
+#navigation .inner .create {
+    display: none;
+}
+
+#navigation .inner .menu {
+    display: inline-block;
+}
+
+#view {
+    padding: 0 10px;
+    min-width: calc(100% - 20px);
+}
+.logopart {
+    margin: auto;
+}
+#view .left {
+	display: none;
+	position: static;
+    top: 0px;
+    padding: 0 10px;
+    height: calc(100% - 50px);
+    z-index: 11;
+	width: 0;
+    transition: left 0.5s;
+    overflow-y: auto;
+    margin-top: 50px;
+}
+#footer .lists,
+#view .right {
+    margin: auto;
+	padding: 1px;
+    width: 100%;
+	align-items: center;
+	justify-content: center;
+}
+.logopart {
+    margin: auto;
+	position:static;
+	width:33%;
+	align-items: center;
+	justify-content: center;
+}

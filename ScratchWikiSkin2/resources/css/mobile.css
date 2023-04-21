@@ -1,0 +1,48 @@
+.inner {
+    width: calc(100vw - 20px);
+}
+#view {
+    padding: 0 10px;
+    min-width: calc(100% - 20px);
+}
+.logopart {
+    margin: auto;
+}
+#view .left {
+	display: none;
+	position: static;
+    top: 0px;
+    padding: 0 10px;
+    height: calc(100% - 50px);
+    z-index: 11;
+	width: 0;
+    transition: left 0.5s;
+    overflow-y: auto;
+    margin-top: 50px;
+}
+#footer .lists,
+#view .right {
+    margin: auto;
+	padding: 1px;
+    width: 100%;
+	align-items: center;
+	justify-content: center;
+}
+.logopart {
+    margin: auto;
+	position:static;
+	width:33%;
+	align-items: center;
+	justify-content: center;
+}
+#navigation .sidebar-toggle a {
+    width: 50px;
+    height: 50px;
+    display: block;
+    /* @embed */
+    background-image: url("../Hamburger_icon.svg");
+    background-size: 25px 25px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    filter: invert(100%);
+}
