@@ -54,63 +54,66 @@ class ScratchWikiSkinTemplate extends BaseTemplate
 					<li class="logo"><a aria-label="Spells&Guns" href="https://www.spellsandguns.com/">
 							<img alt="<?= wfMessage('sitetitle')->inContentLanguage()->escaped() ?>" src="<?= htmlspecialchars($wordmark) ?>" height="<?= $wordmarkH ?>" width="<?= $wordmarkW ?>">
 						</a></li>
+						
 					<li class="link menu">
 						<a class="dropdown-toggle" style="font-size:1.8rem;text-align:center;">&equiv;</a>
 						<ul class="dropdown">
-							<li><a href="/"><span><?= wfMessage('sng-home')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Beginners_Guide"><span><?= wfMessage('sng-beginners-guide')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Classes"><span><?= wfMessage('sng-classes')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Stats"><span><?= wfMessage('sng-stats')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Dungeon"><span><?= wfMessage('sng-dungeon')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Trading"><span><?= wfMessage('sng-trading')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Weapons"><span><?= wfMessage('sng-weapons')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Armors"><span><?= wfMessage('sng-armors')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Jewelry"><span><?= wfMessage('sng-jewelry')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Consumables"><span><?= wfMessage('sng-consumables')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Utility"><span><?= wfMessage('sng-utility')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Materials"><span><?= wfMessage('sng-materials')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Monsters"><span><?= wfMessage('sng-monsters')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="https://darkanddarker.map.spellsandguns.com/" target="_blank"><span><?= wfMessage('sng-map')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Lootables"><span><?= wfMessage('sng-lootables')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Enchantments"><span><?= wfMessage('sng-enchantments')->inLanguage($wgLang)->escaped() ?></span></a></li>
+					<?php foreach ($this->getSidebar() as $box) { ?>
+						<?php if ($box['header'] == "Tools") { 
+								continue;
+						  }?>
+							<?php if (count($box['content'])==1) { 
+								 $item = $box['content'][0];
+								 if (str_contains($item['href'], 'https://') or str_contains($item['href'], 'http://')) {?>
+									<li><a href="<?= $item['href'] ?>" target="_blank"><span><?= $box['header'] ?></span></a></li>
+								 <?php }
+								 else {?>
+									<li><a href="<?= $item['href'] ?>"><span><?= $box['header'] ?></span></a></li>
+								 <?php }?>
+							<?php }
+							else {?>
+									<?php if (is_array($box['content'])) { ?>
+											<?php foreach ($box['content'] as $name => $item) { ?>
+											<li><a href="<?= $item['href'] ?>"><span><?= $item['text'] ?></span></a></li>
+											<?php  } ?>
+									<?php }?>
+							<?php } ?>
+					<?php } ?>
 						</ul>
 					</li>
-					<li class="link about">
-						<a a href="/"><span><?= wfMessage('sng-home')->inLanguage($wgLang)->escaped() ?></span></a>
-					</li>
-					<li class="link create">
-						<a class="dropdown-toggle"><span><?= wfMessage('sng-general')->inLanguage($wgLang)->escaped() ?></span></a>
-						<ul class="dropdown">
-							<li><a href="/Beginners_Guide"><span><?= wfMessage('sng-beginners-guide')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Classes"><span><?= wfMessage('sng-classes')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Stats"><span><?= wfMessage('sng-stats')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Dungeon"><span><?= wfMessage('sng-dungeon')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Trading"><span><?= wfMessage('sng-trading')->inLanguage($wgLang)->escaped() ?></span></a></li>
-						</ul>
-					</li>
-					<li class="link create">
-						<a class="dropdown-toggle"><span><?= wfMessage('sng-items')->inLanguage($wgLang)->escaped() ?></span></a>
-						<ul class="dropdown">
-							<li><a href="/Weapons"><span><?= wfMessage('sng-weapons')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Armors"><span><?= wfMessage('sng-armors')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Jewelry"><span><?= wfMessage('sng-jewelry')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Consumables"><span><?= wfMessage('sng-consumables')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Utility"><span><?= wfMessage('sng-utility')->inLanguage($wgLang)->escaped() ?></span></a></li>
-							<li><a href="/Materials"><span><?= wfMessage('sng-materials')->inLanguage($wgLang)->escaped() ?></span></a></li>
-						</ul>
-					</li>
-					<li class="link about">
-						<a a href="/Monsters"><span><?= wfMessage('sng-monsters')->inLanguage($wgLang)->escaped() ?></span></a>
-					</li>
-					<li class="link about">
-						<a a href="/Lootables"><span><?= wfMessage('sng-lootables')->inLanguage($wgLang)->escaped() ?></span></a>
-					</li>
-					<li class="link about">
-						<a a href="https://darkanddarker.map.spellsandguns.com/" target="_blank"><span><?= wfMessage('sng-map')->inLanguage($wgLang)->escaped() ?></span></a>
-					</li>
-					<li class="link about">
-						<a a href="/Enchantments"><span><?= wfMessage('sng-enchantments')->inLanguage($wgLang)->escaped() ?></span></a>
-					</li>
+					
+					<?php foreach ($this->getSidebar() as $box) { ?>
+						<?php if ($box['header'] == "Tools") { 
+									continue;
+							  }?>
+						<?php if (count($box['content'])==1) { ?>
+							<li class="link about">
+								 <?php $item = $box['content'][0];
+								 if (str_contains($item['href'], 'https://') or str_contains($item['href'], 'http://')) {?>
+									<a href="<?= $item['href'] ?>" target="_blank"><span><?= $box['header'] ?></span></a>
+								 <?php }
+								 else {?>
+									<a href="<?= $item['href'] ?>"><span><?= $box['header'] ?></span></a>
+								 <?php }?>
+							</li>
+						<?php }
+						else {?>
+							<li class="link create">
+								<a class="dropdown-toggle"><span><?= $box['header'] ?></span></a>
+								<ul class="dropdown">
+									
+									<?php if (is_array($box['content'])) { ?>
+											<?php foreach ($box['content'] as $name => $item) { ?>
+											
+											<li><a href="<?= $item['href'] ?>"><span><?=  $item['text'] ?></span></a></li>
+											
+											<?php  } ?>
+									<?php } ?>
+								</ul>
+							</li>
+						<?php } ?>
+					<?php } ?>
+					
 
 					<li class="search">
 						<form class="form" action="<?php $this->text('wgScript') ?>" role="search" aria-label="Search the Wiki">
@@ -259,7 +262,7 @@ class ScratchWikiSkinTemplate extends BaseTemplate
 							<a href="/Special:RecentChanges">Recent Changes</a>
 							
 						</span>					
-						<?php if (is_array($box['content'])) { ?>
+						<?php if (($box['header'] == "Tools") and (is_array($box['content']))) { ?>
 											<ul>
 												<?php foreach ($box['content'] as $name => $item) { ?>
 													<?= $this->getSkin()->makeListItem($name, $item) ?>
@@ -267,8 +270,6 @@ class ScratchWikiSkinTemplate extends BaseTemplate
 												<?php } ?>
 
 											</ul>
-										<?php } else { ?>
-											<?= $box['content'] ?>
 										<?php } ?>
 					</div>
 				</div>
